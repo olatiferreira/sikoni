@@ -23,9 +23,11 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
-// $app->withFacades();
+$app->withFacades();
 
 // $app->withEloquent();
+
+$app->configure('cors');
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +69,22 @@ $app->singleton(
 //     'auth' => App\Http\Middleware\Authenticate::class,
 // ]);
 
+
+$app->middleware([        
+    // \Barryvdh\Cors\HandleCors::class,
+     // Barryvdh\Cors\HandlePreflightSimple::class
+    'Vluzrmos\LumenCors\CorsMiddleware'
+]);
+
+$app->routeMiddleware([
+    // 'cors ' => App\Http\Middleware\CorsMiddleware::class,   
+    'auth' => App\Http\Middleware\Authenticate::class,      
+    'cors' => 'palanik\lumen\Middleware\LumenCors',
+     // 'cors' => \Barryvdh\Cors\HandleCors::class,      
+]);
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers
@@ -78,9 +96,12 @@ $app->singleton(
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
+$app->register(App\Providers\CatchAllOptionsRequestsProvider::class);
+// $app->register(Barryvdh\Cors\ServiceProvider::class);
+$app->register(App\Providers\AppServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
+$app->register(App\Providers\EventServiceProvider::class);
+
 
 /*
 |--------------------------------------------------------------------------

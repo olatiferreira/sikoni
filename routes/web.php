@@ -12,5 +12,18 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+	return $router->app->version();
+});
+
+
+$router->group(['middleware' => 'auth', 'cors'], function () use ($router) {
+
+	// Test API
+	$router->get('/ping', function () use ($router) {
+		return response()->json("Pong!", 418);    
+	});
+
+	// Tickets
+	$router->get('/ticket', 'Ticket@getTickets');
+
 });
