@@ -26,4 +26,7 @@ $router->group(['middleware' => 'auth', 'cors'], function () use ($router) {
 	// Tickets
 	$router->get('/ticket', 'Ticket@getTickets');
 
+	//Users	
+	$router->get('/user/{login}/{password}', 'User@getUser');
+	$router->post('/user', 'User@addUser');
 });
