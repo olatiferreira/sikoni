@@ -86,7 +86,7 @@ class User extends Controller
             ->where('id', $id)                    
             ->update(['name' => $request->input('name'), 
                     'login' => $request->input('login'),
-                    'password' => $request->input('password'),                    
+                    'password' => md5($request->input('password')),
                     'update_at' => date('Y-m-d H:i')]);
 
             return response()->json(['status' => 'success', 'message' => 'user updated'], 200);
