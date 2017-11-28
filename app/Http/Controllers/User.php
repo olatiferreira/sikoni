@@ -31,6 +31,7 @@ class User extends Controller
         }
 
     }   
+
     public function addUser(Request $request){
         $validator = Validator::make($request->input(), [
             'name' => 'required',
@@ -60,7 +61,6 @@ class User extends Controller
             }
         }
     }
-
     public function delUser(Request $request, $id){
         $hasUser = DB::table('users')
                     ->where('id', $id)
@@ -72,6 +72,24 @@ class User extends Controller
             ->update(['update_at' => date('Y-m-d H:i')]);
             
             return response()->json(['status' => 'success', 'message' => 'user deleted'], 200);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'there is no user with this ID'], 422);
+        }
+    }
+    public function updateUser(Request $request, $id){
+        $hasUser = DB::table('users')
+                    ->where('id', $id)
+                    ->first();
+
+        if($hasUser){
+            DB::table('users')
+            ->where('id', $id)                    
+            ->update(['name' => $request->input('name'), 
+                    'login' => $request->input('login'),
+                    'password' => $request->input('password'),                    
+                    'update_at' => date('Y-m-d H:i')]);
+
+            return response()->json(['status' => 'success', 'message' => 'user updated'], 200);
         } else {
             return response()->json(['status' => 'error', 'message' => 'there is no user with this ID'], 422);
         }
