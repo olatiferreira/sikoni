@@ -60,5 +60,20 @@ class User extends Controller
             }
         }
     }
-    
+
+    public function delUser(Request $request, $id){
+        $hasUser = DB::table('users')
+                    ->where('id', $id)
+                    ->first();
+
+        if($hasUser){ 
+            DB::table('users')
+            ->where('id', $id)
+            ->update(['update_at' => date('Y-m-d H:i')]);
+            
+            return response()->json(['status' => 'success', 'message' => 'user deleted'], 200);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'there is no user with this ID'], 422);
+        }
+    }
 }

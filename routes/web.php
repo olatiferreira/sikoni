@@ -29,4 +29,5 @@ $router->group(['middleware' => 'auth', 'cors'], function () use ($router) {
 	//Users	
 	$router->get('/user/{login}/{password}', 'User@getUser');
 	$router->post('/user', 'User@addUser');
+	$router->delete('/user/{id}', 'User@delUser');
 });
