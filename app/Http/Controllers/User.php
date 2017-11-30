@@ -27,7 +27,7 @@ class User extends Controller
         if($user){
             return response()->json(['status' => 'success', 'data' => $user]);
         } else {
-            return response()->json(['status' => 'error', 'message' => 'there is no user with this login or password'], 400);
+            return response()->json(['status' => 'error', 'message' => 'Usuário ou senha incorreta...'], 400);
         }
 
     }   
