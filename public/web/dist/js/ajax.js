@@ -1,4 +1,4 @@
-function signIn(){	
+function signIn (){	
 	var settings = {    
 		"url": "http://localhost:8000/user/"+ $('#login').val() + '/' + $('#password').val(),
 		"method": "GET",
@@ -17,6 +17,5 @@ function signIn(){
 			console.log ('success');
 			window.location.href = "http://localhost:8000/web/dashboard.html";
 		}				
-	});
-	
+	});	
 }
