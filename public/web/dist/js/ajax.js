@@ -15,6 +15,7 @@ function signIn(){
 		}
 		else {
 			console.log ('success');
+			window.location.href = "http://localhost:8000/web/dashboard.html";
 		}				
 	});
 	
