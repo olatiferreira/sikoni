@@ -19,8 +19,33 @@ class Ticket extends Controller
     }   
     public function getTickets(){
         $ticket = DB::table('tickets')
-                    ->orderBy('id')
-                    ->distinct()->get();
+        ->orderBy('id')
+        ->distinct()->get();
         return response()->json(['data' => $ticket]);
     }    
+
+    public function addTickets(Request $request){
+        $validator = Validator::make($request->input(), [
+            'name' => 'required',
+            'email' => 'required',
+            'descryption' => 'required',                     
+        ]);
+
+        if ($validator->fails()) {
+            $error = $this->getValidateMessages($validator->messages()->getMessages());
+            return response()->json(['status' => 'error', 'message' => $error], 422);
+        } else {
+            
+            DB::table('tickets')->insert([
+                'name' => $request->input('name'), 
+                'email' => $request->input('email'), 
+                'descryption' => $request->input('descryption'),
+                'entry_date' => date('Y-m-d H:i'),
+                'update_at' =>  NULL,
+            ]);
+
+            return response()->json(['status' => 'success', 'message' => 'ticket created'], 201);
+        } 
+    }
 }
+
