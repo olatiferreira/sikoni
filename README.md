@@ -3,9 +3,18 @@
 * PHP >= 7.0
 
 *Descomentar as linhas abaixo no arquivo "php.ini":*
-  extension=php_openssl.dll
-  extension=php_pdo_pgsql.dll
-  extension=php_mbstring.dll
+
+```
+extension=php_openssl.dll
+```
+
+```
+extension=php_pdo_pgsql.dll
+```
+
+```
+extension=php_mbstring.dll
+```
 
 * Composer
 
@@ -18,13 +27,19 @@ Já no front-end foi utilizado HTML, CSS, JS e o framework [Bootstrap](https://g
 
 ## Instalação
 
-  git clone https://olatiferreira@bitbucket.org/olatiferreira/sikoni.git
+```
+git clone https://olatiferreira@bitbucket.org/olatiferreira/sikoni.git
+```
 *Clona o repositório para a máquina.*
 
-  cd sikoni/
+```
+cd sikoni/
+```
 *Acessa a pasta raiz do projeto.*
 
-  composer install
+```
+composer install
+```
 *Donwload das dependências do projeto.*
 
 * Criar do banco de dados, as tabelas e inserir do usuário (para acessar o sistema).
@@ -36,11 +51,14 @@ Obs.: Os scripts estão dentro do arquivo "DB.sql" na pasta raiz do projeto.
 
 Na pasta raiz do projeto, entre com o comando abaixo:
 
-  php -S localhost:8000 -t public
+```
+php -S localhost:8000 -t public
+```
 
 **Acesse o projeto:**
   
-  http://localhost:8000/web/
+http://localhost:8000/web/
+
 *Tela de login do sistema.*
 
 ## Contato
