@@ -14,7 +14,7 @@ CONSTRAINT pk_tb_users_id PRIMARY KEY (id)
 );
 
 INSERT INTO tb_users VALUES
-(DEFAULT, 'Ítalo César Ferreira da Costa', 'icfcosta', md5('123'), '2017-11-28');
+(DEFAULT, 'Administrador', 'admin', md5('admin'), '2017-11-28');
 
 SELECT * 
 FROM tb_users;
@@ -24,13 +24,14 @@ id		SERIAL,
 name		VARCHAR(100),
 email		VARCHAR(100),
 descryption	VARCHAR(255),
+status		VARCHAR(100),
 entry_date	VARCHAR(100),
 update_at	VARCHAR(100),
 CONSTRAINT pk_tb_tickets_id PRIMARY KEY (id)
 );
 
 INSERT INTO tb_tickets VALUES
-(DEFAULT, 'Solicitação de Acesso', 'olatiferreira@gmail.com', 'Solicito acesso ao sistema sikoni', '2017-11-28');
+(DEFAULT, 'Solicitação de Acesso', 'sikoni@sikoni.com', 'Solicito acesso ao sistema sikoni', 'Em processamento', '2017-11-28');
 
 SELECT *
 FROM tb_tickets;

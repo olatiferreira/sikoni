@@ -24,6 +24,12 @@ class Ticket extends Controller
         return response()->json(['data' => $ticket]);
     }    
 
+    public function countTickets(){
+       $ticket = DB::table('tickets')        
+        ->count();
+        return response()->json(['data' => $ticket]);
+    }  
+
     public function addTickets(Request $request){
         $validator = Validator::make($request->input(), [
             'name' => 'required',
@@ -40,6 +46,7 @@ class Ticket extends Controller
                 'name' => $request->input('name'), 
                 'email' => $request->input('email'), 
                 'descryption' => $request->input('descryption'),
+                'status' => 'Em processamento',
                 'entry_date' => date('Y-m-d H:i'),
                 'update_at' =>  NULL,
             ]);

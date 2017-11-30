@@ -32,6 +32,12 @@ class User extends Controller
 
     }   
 
+    public function countUser(){
+       $user = DB::table('users')        
+        ->count();
+        return response()->json(['data' => $user]);
+    }
+
     public function addUser(Request $request){
         $validator = Validator::make($request->input(), [
             'name' => 'required',

@@ -20,7 +20,7 @@
   <!-- <link rel="stylesheet" href="dist/css/bootstrap3-wysihtml5.min.css"> -->
 
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" onLoad="dashboard();">
   <div class="wrapper">
 
     <header class="main-header">
@@ -118,7 +118,7 @@
         </a>
         <ul class="treeview-menu">
           <li class="active"><a href="http://localhost:8000/web/ticketAdd.html"><i class="fa fa-plus"></i> Cadastrar</a></li>
-          <li><a href="#"><i class="fa fa-search"></i> Consultar</a></li>
+          <li><a href="http://localhost:8000/web/ticketSearch.html"><i class="fa fa-search"></i> Consultar</a></li>
         </ul>
       </li>
 
@@ -145,14 +145,14 @@
 
         <div class="small-box bg-aqua">
           <div class="inner">
-            <h3>10</h3>
+            <h3 id="ticketCount"></h3>
 
             <p>Tickets</p>
           </div>
           <div class="icon">
             <i class="fa fa-ticket"></i>
           </div>
-          <a href="#" class="small-box-footer">Mais Informações... <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="ticketSearch.html" class="small-box-footer">Mais Informações... <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
 
@@ -160,14 +160,14 @@
 
         <div class="small-box bg-green">
           <div class="inner">
-            <h3>2</h3>
+            <h3 id="userCount"></h3>
 
             <p>Usuários</p>
           </div>
           <div class="icon">
             <i class="fa fa-user"></i>
           </div>
-          <a href="#" class="small-box-footer">Mais Informações... <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="#" class="small-box-footer">Em construção... <i class="fa fa-gears"></i></a>
         </div>
       </div>
 
@@ -181,7 +181,7 @@
   <div class="pull-right hidden-xs">
     <b>Created with </b> <i class="fa fa-heart" style="color: red"></i>
   </div>
-  <strong>Copyright &copy; 2017 <a href="http://www.olatiferreira.com.br">Ítalo Ferreira</a>.</strong> Todos direitos reservados.
+  <strong>Copyright &copy; 2017 <a href="http://www.olatiferreira.com" target="_blank">Ítalo Ferreira</a>.</strong> Todos direitos reservados.
 </footer>
 
 <div class="control-sidebar-bg"></div>

@@ -25,10 +25,12 @@ $router->group(['middleware' => 'auth', 'cors'], function () use ($router) {
 
 	// Tickets
 	$router->get('/ticket', 'Ticket@getTickets');
+	$router->get('/ticketCount', 'Ticket@countTickets');
 	$router->post('/ticket', 'Ticket@addTickets');
 
 	//Users	
 	$router->get('/user/{login}/{password}', 'User@getUser');
+	$router->get('/userCount', 'User@countUser');
 	$router->post('/user', 'User@addUser');
 	$router->delete('/user/{id}', 'User@delUser');
 	$router->put('/user/{id}', 'User@updateUser');

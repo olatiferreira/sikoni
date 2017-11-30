@@ -46,6 +46,83 @@ function ticketAdd (){
 	});
 }
 
+function ticketSearch (){	
+	var settings = {    
+		"url": "http://localhost:8000/ticket",
+		"method": "GET",
+		"headers": {
+			"authorization": "1cbb35b2dadcbafc44219c48f6527c4e",
+			"content-type": "application/json",        
+		}
+	}	
+	$.ajax(settings).always(function (response) {
+		if (response.status == 400){
+			signError(response.responseJSON['message']);
+		} else if (response.status == 0){
+			serverProblem();
+		}
+		else {					
+			var len = response.data.length;
+			var txt = "";
+			if(len > 0){
+				for(var i=0;i<len;i++){
+					if(response.data[i].name){
+						txt += "<tr><td>"+response.data[i].id+"</td>"+
+						"<td>"+response.data[i].name+"</td>"+
+						"<td>"+response.data[i].email+"</td>"+
+						"<td>"+response.data[i].entry_date+"</td>"+
+						"<td>"+response.data[i].status+"</td>"+
+						"</tr>";
+					}
+				}
+				if(txt != ""){
+					$("#table").append(txt).removeClass("hidden");
+				}
+			}
+		}				
+	});	
+}
+
+function dashboard (){	
+	var settings = {    
+		"url": "http://localhost:8000/ticketCount",
+		"method": "GET",
+		"headers": {
+			"authorization": "1cbb35b2dadcbafc44219c48f6527c4e",
+			"content-type": "application/json",        
+		}
+	}
+
+	var settings2 = {    
+		"url": "http://localhost:8000/userCount",
+		"method": "GET",
+		"headers": {
+			"authorization": "1cbb35b2dadcbafc44219c48f6527c4e",
+			"content-type": "application/json",        
+		}
+	}	
+	$.ajax(settings).always(function (response) {
+		if (response.status == 400){
+			signError(response.responseJSON['message']);
+		} else if (response.status == 0){
+			serverProblem();
+		}
+		else {					
+			$('#ticketCount').html(response.data);
+		}				
+	});	
+	$.ajax(settings2).always(function (response) {
+		if (response.status == 400){
+			signError(response.responseJSON['message']);
+		} else if (response.status == 0){
+			serverProblem();
+		}
+		else {					
+			$('#userCount').html(response.data);
+		}				
+	});	
+}
+
 function serverProblem(){
 	swal({
 		title: 'Erro ao conectar com o servidor!',        
